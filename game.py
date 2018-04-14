@@ -2,8 +2,10 @@ import os, pygame
 
 from settings import Settings
 from objects.player import Player
+from objects.item import Item
 # from text_window import TextObject
 from pygame import *
+
 
 
 WIN_WIDTH = 800  # Ширина создаваемого окна
@@ -18,12 +20,11 @@ enemy = pygame.transform.scale(enemy, (320, 240))
 class Game():
 	def __init__(self):
 		self.player = Player(WIN_WIDTH / 2, 360)
-		# pygame.init()  # Инициация PyGame, обязательная строчка
-		# screen = pygame.display.set_mode(DISPLAY)  # Создаем окошко
-		# будем использовать как фон
-		bg.fill(Color(BACKGROUND_COLOR))  # Заливаем поверхность сплошным цветом
+
+		self.items = [Item(WIN_WIDTH / 2, 310)]
+
 		self.left = self.right = self.up = self.down = False
-		# self.text = TextObject(100, 100, "gg", "#004400", "arial", 12)
+
 
 	def loop(self, screen):
 		clock = pygame.time.Clock()
@@ -67,9 +68,14 @@ class Game():
 				#     up = False
 
 
-			self.player.update(self.left, self.right, self.up, self.down)
+			self.player.update(self.left, self.right, self.items)
 			self.player.draw(screen)
 			# self.TextObject.drow()
+
+			for i in self.items:
+				i.update()
+				i.draw(screen)
+
 			pygame.display.update()
 
 	def quit(self):

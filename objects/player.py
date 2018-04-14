@@ -37,7 +37,12 @@ class Player(sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (self.startX, self.startY)
 
-    def update(self, left, right, up, down):
+    def update(self, left, right, items):
+
+        for item in items:
+            if abs(item.rect.x - self.rect.x) < 60:
+                pass
+
         if left:
             if (self.rect.x > 0):
                 self.xvel = -MOVE_SPEED  # Лево = x- n
