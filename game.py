@@ -2,7 +2,9 @@ import os, pygame
 
 from settings import Settings
 from objects.player import Player
+# from text_window import TextObject
 from pygame import *
+
 
 WIN_WIDTH = 800  # Ширина создаваемого окна
 WIN_HEIGHT = 640  # Высота
@@ -10,6 +12,8 @@ DISPLAY = (WIN_WIDTH, WIN_HEIGHT)  # Группируем ширину и выс
 BACKGROUND_COLOR = "#004400"
 bg = Surface((WIN_WIDTH, WIN_HEIGHT))
 images = pygame.image.load(os.path.abspath('images/bg2.jpg'))
+enemy = pygame.image.load(os.path.abspath('images/enemy.jpg'))
+enemy = pygame.transform.scale(enemy, (320, 240))
 
 class Game():
 	def __init__(self):
@@ -19,6 +23,7 @@ class Game():
 		# будем использовать как фон
 		bg.fill(Color(BACKGROUND_COLOR))  # Заливаем поверхность сплошным цветом
 		self.left = self.right = self.up = self.down = False
+		# self.text = TextObject(100, 100, "gg", "#004400", "arial", 12)
 
 	def loop(self, screen):
 		clock = pygame.time.Clock()
@@ -27,6 +32,7 @@ class Game():
 		while True:
 			bg.blit(images, (0 + scroll, 0))
 			screen.blit(bg, (0, 0))
+			screen.blit(enemy, (600, -50))
 			if (self.player.rect.x < 0 and scroll < 0):
 				scroll += 2
 
@@ -41,7 +47,7 @@ class Game():
 
 				if e.type == KEYDOWN and e.key == K_LEFT:
 					self.left = True
-					self.player.rect.x += 2;
+					self.player.rect.x += 2
 				if e.type == KEYDOWN and e.key == K_RIGHT:
 					self.right = True
 
@@ -63,6 +69,7 @@ class Game():
 
 			self.player.update(self.left, self.right, self.up, self.down)
 			self.player.draw(screen)
+			# self.TextObject.drow()
 			pygame.display.update()
 
 	def quit(self):
