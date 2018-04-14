@@ -3,6 +3,7 @@ import os, pygame
 from settings import Settings
 from objects.player import Player
 from objects.item import Item
+from dialog import Dialog
 # from text_window import TextObject
 from pygame import *
 
@@ -13,9 +14,7 @@ WIN_HEIGHT = 640  # Высота
 DISPLAY = (WIN_WIDTH, WIN_HEIGHT)  # Группируем ширину и высоту в одну переменную
 BACKGROUND_COLOR = "#004400"
 bg = Surface((WIN_WIDTH, WIN_HEIGHT))
-images = pygame.image.load(os.path.abspath('images/bg2.jpg'))
-enemy = pygame.image.load(os.path.abspath('images/enemy.jpg'))
-enemy = pygame.transform.scale(enemy, (320, 240))
+images = pygame.image.load(os.path.abspath('images/bg.jpg'))
 
 class Game():
 	def __init__(self):
@@ -24,6 +23,8 @@ class Game():
 		self.player = Player(WIN_WIDTH / 2, 360)
 
 		self.items = [Item(WIN_WIDTH / 2, 310)]
+
+		self.dialog = Dialog("-Добро пожаловать в мир твоих самых страшных кошмаров.")
 
 		self.left = self.right = self.up = self.down = False
 
@@ -37,7 +38,6 @@ class Game():
 				i.update()
 				i.draw(bg, self.scroll)
 			screen.blit(bg, (0, 0))
-			screen.blit(enemy, (600, -50))
 			if (self.player.rect.x < 0 and self.scroll < 0):
 				self.scroll += 2
 
@@ -74,7 +74,7 @@ class Game():
 
 			self.player.update(self.left, self.right, self.items, self.scroll)
 			self.player.draw(screen)
-			# self.TextObject.drow()
+			self.dialog.draw(screen)
 
 			pygame.display.update()
 
