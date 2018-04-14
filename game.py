@@ -13,8 +13,8 @@ bg = Surface((WIN_WIDTH, WIN_HEIGHT))
 class Game():
 	def __init__(self):
 		self.player = Player(WIN_WIDTH / 2, WIN_HEIGHT / 2)
-		pygame.init()  # Инициация PyGame, обязательная строчка
-		screen = pygame.display.set_mode(DISPLAY)  # Создаем окошко
+		# pygame.init()  # Инициация PyGame, обязательная строчка
+		# screen = pygame.display.set_mode(DISPLAY)  # Создаем окошко
 		# будем использовать как фон
 		bg.fill(Color(BACKGROUND_COLOR))  # Заливаем поверхность сплошным цветом
 		self.left = self.right = self.up = self.down = False
@@ -48,7 +48,6 @@ class Game():
 				# if e.type == KEYUP and e.key == K_DOWN:
 				#     up = False
 
-			self.player.update(self.left, self.right, self.up, self.down)
 			self.player.update(self.left, self.right, self.up, self.down)
 			self.player.draw(screen)
 			pygame.display.update()

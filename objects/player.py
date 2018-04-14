@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from pygame import *
+import math
 
 MOVE_SPEED = 2
 
@@ -17,28 +18,54 @@ class Player(sprite.Sprite):
         self.yvel = 0
         self.startX = x  # Начальная позиция Х, пригодится когда будем переигрывать уровень
         self.startY = y
-        self.image = Surface((WIDTH, HEIGHT))
-        self.image.fill(Color(COLOR))
-        self.rect = Rect(x, y, WIDTH, HEIGHT)  # прямоугольный объект
+        # self.image = Surface((WIDTH, HEIGHT))
+        # self.image.fill(Color(COLOR))
+        # self.rect = Rect(x, y, WIDTH, HEIGHT)  # прямоугольный объект
+
+        self.imagesLeft = []
+        self.imagesRight = []
+        self.imagesFront = []
+        self.imagesRight.append(transform.scale(image.load('images/1.png'), (320, 240)))
+        self.imagesRight.append(transform.scale(image.load('images/5.png'), (320, 240)))
+        self.imagesLeft.append(transform.scale(image.load('images/3.png'), (320, 240)))
+        self.imagesLeft.append(transform.scale(image.load('images/4.png'), (320, 240)))
+        self.imagesFront.append(transform.scale(image.load('images/2.png'), (320, 240)))
+        self.index = 0
+        self.image = self.imagesFront[self.index]
+
+        self.image = transform.scale(self.image, (320, 240))
+        self.rect = self.image.get_rect()
+        self.rect.center = (self.startX, self.startY)
 
     def update(self, left, right, up, down):
         if left:
             self.xvel = -MOVE_SPEED  # Лево = x- n
+            self.index += 0.1
+            if math.floor(self.index) >= len(self.imagesLeft):
+                self.index = 0
+            self.image = self.imagesLeft[math.floor(self.index)]
 
         if right:
             self.xvel = MOVE_SPEED  # Право = x + n
+            self.index += 0.1
+            if math.floor(self.index) >= len(self.imagesRight):
+                self.index = 0
+            self.image = self.imagesRight[math.floor(self.index)]
 
-        if up:
-            self.yvel = MOVE_SPEED * 0.75
-
-        if down:
-            self.yvel = -MOVE_SPEED * 0.75
+        # if up:
+        #     self.yvel = MOVE_SPEED * 0.75
+        #
+        #
+        # if down:
+        #     self.yvel = -MOVE_SPEED * 0.75
 
         if not (left or right):  # стоим, когда нет указаний идти
             self.xvel = 0
+            self.image = self.imagesFront[0]
 
-        if not (up or down):
-            self.yvel = 0
+        # if not (up or down):
+        #     self.yvel = 0
+
 
         self.rect.x += self.xvel  # переносим свои положение на xvel
         self.rect.y += self.yvel
