@@ -25,11 +25,11 @@ class Player(sprite.Sprite):
         self.imagesLeft = []
         self.imagesRight = []
         self.imagesFront = []
-        self.imagesRight.append(transform.scale(image.load('images/1.png'), (320, 240)))
-        self.imagesRight.append(transform.scale(image.load('images/5.png'), (320, 240)))
-        self.imagesLeft.append(transform.scale(image.load('images/3.png'), (320, 240)))
-        self.imagesLeft.append(transform.scale(image.load('images/4.png'), (320, 240)))
-        self.imagesFront.append(transform.scale(image.load('images/2.png'), (320, 240)))
+        self.imagesRight.append(transform.scale(image.load('images/1.png'), (320 // 2, 240 // 2)))
+        self.imagesRight.append(transform.scale(image.load('images/5.png'), (320 // 2, 240 // 2)))
+        self.imagesLeft.append(transform.scale(image.load('images/3.png'), (320 // 2, 240 // 2)))
+        self.imagesLeft.append(transform.scale(image.load('images/4.png'), (320 // 2, 240 // 2)))
+        self.imagesFront.append(transform.scale(image.load('images/2.png'), (320 // 2, 240 // 2)))
         self.index = 0
         self.image = self.imagesFront[self.index]
 
@@ -39,14 +39,20 @@ class Player(sprite.Sprite):
 
     def update(self, left, right, up, down):
         if left:
-            self.xvel = -MOVE_SPEED  # Лево = x- n
+            if (self.rect.x > 0):
+                self.xvel = -MOVE_SPEED  # Лево = x- n
+            else:
+                self.rect.right = 320
             self.index += 0.1
             if math.floor(self.index) >= len(self.imagesLeft):
                 self.index = 0
             self.image = self.imagesLeft[math.floor(self.index)]
 
         if right:
-            self.xvel = MOVE_SPEED  # Право = x + n
+            if (self.rect.x < 650):
+                self.xvel = MOVE_SPEED  # Право = x + n
+            else:
+                self.rect.right = 970
             self.index += 0.1
             if math.floor(self.index) >= len(self.imagesRight):
                 self.index = 0

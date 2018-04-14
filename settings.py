@@ -1,4 +1,4 @@
 class Settings:
 	title	      = "The Saw Game"
 	width         = 800
-	height 	      = 600
+	height 	      = 368
