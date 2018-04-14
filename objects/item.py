@@ -27,5 +27,5 @@ class Item(sprite.Sprite):
     def update(self):
         pass
 
-    def draw(self, screen):
-        screen.blit(self.image, (self.rect.x, self.rect.y))
+    def draw(self, screen, scroll):
+        screen.blit(self.image, (self.rect.x + scroll, self.rect.y))

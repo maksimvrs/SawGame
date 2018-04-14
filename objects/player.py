@@ -37,11 +37,11 @@ class Player(sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (self.startX, self.startY)
 
-    def update(self, left, right, items):
+    def update(self, left, right, items, scroll):
 
         for item in items:
-            if abs(item.rect.x - self.rect.x) < 60:
-                pass
+            if abs(item.rect.x + scroll - self.rect.x) < 60:
+                print('ok')
 
         if left:
             if (self.rect.x > 0):
