@@ -7,14 +7,14 @@ class Item(sprite.Sprite):
 
     images = []
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, image_path):
         sprite.Sprite.__init__(self)
         self.startX = x
         self.startY = y
 
         self.index = 0
 
-        self.images.append(transform.scale(image.load('images/1.png'), (320 // 2, 240 // 2)))
+        self.images.append(transform.scale(image.load(image_path), (320 // 4, 240 // 3)))
 
         self.image = self.images[self.index]
 

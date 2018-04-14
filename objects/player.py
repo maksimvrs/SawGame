@@ -41,7 +41,8 @@ class Player(sprite.Sprite):
 
         for item in items:
             if abs(item.rect.x + scroll - self.rect.x) < 60:
-                print('ok')
+
+                item.action()
 
         if left:
             if (self.rect.x > 0):

@@ -3,6 +3,7 @@ import os, pygame
 from settings import Settings
 from objects.player import Player
 from objects.item import Item
+from objects.chest import Chest
 from dialog import Dialog
 # from text_window import TextObject
 from pygame import *
@@ -22,7 +23,7 @@ class Game():
 
 		self.player = Player(WIN_WIDTH / 2, 360)
 
-		self.items = [Item(WIN_WIDTH / 2, 310)]
+		self.items = [Chest(WIN_WIDTH / 2, 310, 'images/case.png')]
 
 		self.dialog = Dialog("-Добро пожаловать в мир твоих самых страшных кошмаров.")
 
