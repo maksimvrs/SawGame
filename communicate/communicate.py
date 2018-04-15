@@ -1,3 +1,5 @@
+#from game import Game
+
 class Communicate:
     data = []
 

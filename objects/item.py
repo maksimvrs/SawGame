@@ -7,7 +7,7 @@ class Item(sprite.Sprite):
 
     images = []
 
-    def __init__(self, x, y, image_path, name):
+    def __init__(self, x, y, image_path, name, width, height):
         sprite.Sprite.__init__(self)
 
         self.name = name
@@ -16,14 +16,12 @@ class Item(sprite.Sprite):
         self.startX = x
         self.startY = y
 
-        self.index = 0
-
-        self.images.append(transform.scale(image.load(image_path), (320 // 4, 240 // 3)))
-
-        self.image = self.images[self.index]
+        self.image = transform.scale(image.load(image_path), (width, height))
 
         self.rect = self.image.get_rect()
         self.rect.center = (self.startX, self.startY)
+
+        self.size = (width, height)
 
     def action(self):
         pass

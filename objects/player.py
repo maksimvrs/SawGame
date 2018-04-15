@@ -40,7 +40,7 @@ class Player(sprite.Sprite):
     def update(self, left, right, down, items, scroll, dialog):
 
         for item in items:
-            if abs(item.rect.x + scroll - self.rect.x) < 60:
+            if abs(item.startX - 70 + scroll - self.rect.x) < 60:
                 dialog.setText(item.currentText)
                 if (down):
                     item.action()

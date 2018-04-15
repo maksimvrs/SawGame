@@ -4,6 +4,10 @@ from settings import Settings
 from objects.player import Player
 from objects.item import Item
 from objects.chest import Chest
+from objects.picture import Picture
+from objects.jail import Jail
+from objects.books import Books
+from objects.table import Table
 from dialog import Dialog
 # from text_window import TextObject
 from pygame import *
@@ -15,7 +19,7 @@ WIN_HEIGHT = 640  # Высота
 DISPLAY = (WIN_WIDTH, WIN_HEIGHT)  # Группируем ширину и высоту в одну переменную
 BACKGROUND_COLOR = "#004400"
 bg = Surface((WIN_WIDTH, WIN_HEIGHT))
-images = pygame.image.load(os.path.abspath('images/bg.jpg'))
+images = pygame.image.load(os.path.abspath('images/bg4.jpg'))
 
 class Game():
 	def __init__(self):
@@ -23,8 +27,11 @@ class Game():
 
 		self.player = Player(WIN_WIDTH / 2, 360)
 
-		self.items = [Chest(WIN_WIDTH / 2 + 540, 310, 'images/case.png', "Сейф 1"),
-					  Chest(WIN_WIDTH / 2, 310, 'images/case.png', "Сейф 2")]
+		self.items = [Chest(WIN_WIDTH / 2 + 540, 310, 'images/case.png', "Сейф 1", 320 // 4, 240 // 3),
+					  Picture(WIN_WIDTH / 2 - 150, 240, 'images/picture.png', "Картина", 320 // 4, 240 // 3),
+					  Books(WIN_WIDTH / 2 + 200, 300, 'images/books.png', "Книги",320 // 2, 240 // 2),
+					  Jail(WIN_WIDTH / 2 + 750, 269, 'images/jail.png', "Заключенный", 320, 240),
+					  Table(WIN_WIDTH / 2 - 300, 300, 'images/table.png', "Стол", 320 // 2, 240 // 2)]
 
 		self.dialog = Dialog("- Добро пожаловать в мир твоих самых страшных кошмаров, жалкий офисный червяк.")
 
