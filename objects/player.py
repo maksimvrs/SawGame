@@ -41,9 +41,12 @@ class Player(sprite.Sprite):
 
         for item in items:
             if abs(item.rect.x + scroll - self.rect.x) < 60:
-                dialog.setText("Нажмите для взаимодествия c " + item.name)
+                dialog.setText(item.currentText)
                 if (down):
+                    print(item.currentText)
+                    print(item.name)
                     item.action()
+                break
             else:
                 dialog.clear()
 

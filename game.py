@@ -23,7 +23,8 @@ class Game():
 
 		self.player = Player(WIN_WIDTH / 2, 360)
 
-		self.items = [Chest(WIN_WIDTH / 2 + 540, 310, 'images/case.png')]
+		self.items = [Chest(WIN_WIDTH / 2 + 540, 310, 'images/case.png', "Сейф 1"),
+					  Chest(WIN_WIDTH / 2, 310, 'images/case.png', "Сейф 2")]
 
 		self.dialog = Dialog("- Добро пожаловать в мир твоих самых страшных кошмаров, жалкий офисный червяк.")
 
@@ -53,7 +54,6 @@ class Game():
 
 				if e.type == KEYDOWN and e.key == K_LEFT:
 					self.left = True
-					self.player.rect.x += 2
 				if e.type == KEYDOWN and e.key == K_RIGHT:
 					self.right = True
 
@@ -67,8 +67,10 @@ class Game():
 				if e.type == KEYUP and e.key == K_RIGHT:
 					self.right = False
 
-				if e.type == KEYUP and e.key == K_SPACE:
+				if e.type == KEYDOWN and e.key == K_SPACE:
 				    self.down = True
+				if e.type == KEYUP and e.key == K_SPACE:
+					self.down = False
 				# if e.type == KEYUP and e.key == K_DOWN:
 				#     up = False
 

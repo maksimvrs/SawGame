@@ -55,9 +55,8 @@ dt = 1 / FPS
 
 
 def play_function(font):
-    raise IOError('Not Implemented Exception')
-    # Здесь запуск игры
-    pass
+    import app
+    app.main()
 
 def main_background():
     """

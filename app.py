@@ -12,6 +12,8 @@ def main():
 	screen = pygame.display.set_mode((Settings.width, Settings.height))
 	pygame.display.set_caption(Settings.title)
 
+
+
 	game = Game()
 	game.loop(screen)
 	game.quit()

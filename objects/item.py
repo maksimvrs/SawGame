@@ -7,8 +7,12 @@ class Item(sprite.Sprite):
 
     images = []
 
-    def __init__(self, x, y, image_path):
+    def __init__(self, x, y, image_path, name):
         sprite.Sprite.__init__(self)
+
+        self.name = name
+        self.currentText = "Нажмите для взаимодействия с " + name
+
         self.startX = x
         self.startY = y
 
