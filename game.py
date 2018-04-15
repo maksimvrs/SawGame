@@ -50,8 +50,6 @@ class Game():
 				if e.type == pygame.QUIT:
 					return
 
-
-
 				if e.type == KEYDOWN and e.key == K_LEFT:
 					self.left = True
 				if e.type == KEYDOWN and e.key == K_RIGHT:
@@ -70,7 +68,8 @@ class Game():
 				if e.type == KEYDOWN and e.key == K_SPACE:
 				    self.down = True
 				if e.type == KEYUP and e.key == K_SPACE:
-					self.down = False
+				    self.down = False
+
 				# if e.type == KEYUP and e.key == K_DOWN:
 				#     up = False
 
@@ -78,6 +77,8 @@ class Game():
 			self.player.update(self.left, self.right, self.down, self.items, self.scroll, self.dialog)
 			self.player.draw(screen)
 			self.dialog.draw(screen)
+
+			self.down = False
 
 			pygame.display.update()
 

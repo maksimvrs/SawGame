@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from pygame import *
-import time
 from objects.item import Item
 from communicate.communicate import Communicate
 

@@ -43,8 +43,6 @@ class Player(sprite.Sprite):
             if abs(item.rect.x + scroll - self.rect.x) < 60:
                 dialog.setText(item.currentText)
                 if (down):
-                    print(item.currentText)
-                    print(item.name)
                     item.action()
                 break
             else:
