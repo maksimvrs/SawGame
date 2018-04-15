@@ -8,7 +8,7 @@ from communicate.communicate import Communicate
 class Chest(Item):
     name = "Сейф"
 
-    communicate = Communicate(["1", "2", "3"])
+    communicate = Communicate(["Почему этот сундук открыт?", "Замок сломан...", "Это странно..."])
 
     def action(self):
         self.image = transform.scale(image.load('images/casewithkey.png'), (320 // 4, 240 // 3))

@@ -8,6 +8,7 @@ from objects.picture import Picture
 from objects.jail import Jail
 from objects.books import Books
 from objects.table import Table
+from communicate.communicate import Communicate
 from dialog import Dialog
 # from text_window import TextObject
 from pygame import *
@@ -40,6 +41,9 @@ class Game():
 
 	def loop(self, screen):
 		clock = pygame.time.Clock()
+
+		communicate = Communicate(["- Что, где я ?", "- Добро пожаловать в мир твоих самых страшных кошмаров, жалкий офисный червяк", "- Я ничего не понимаю, что происходит, я просто пошел за кофе, а потом… Ничего не помню", "- Вся твоя жизнь - самый скучный симулятор, но сейчас у тебя появился шанс хотя бы умереть интересно ",
+								   "- Что, нет, выпустите меня", "- Единственный, кто может выпустить тебя - ты сам, ты всю жизнь думал за других, решал за других , пришло время отвечать за себя", "- Но кто это, почему, за что?", "- Ты знаешь…", "- *Пришло время выбираться, кроме себя, тебе не на кого надеяться, поэтому сделай что-нибудь, чтобы выжить*"])
 
 		while True:
 			bg.blit(images, (0 + self.scroll, 0))
@@ -82,6 +86,10 @@ class Game():
 
 
 			self.player.update(self.left, self.right, self.down, self.items, self.scroll, self.dialog)
+			if (self.down == True):
+				communicate.currentText = communicate.next()
+			if (len(communicate.data) > 0):
+				self.dialog.setText(communicate.data[0])
 			self.player.draw(screen)
 			self.dialog.draw(screen)
 

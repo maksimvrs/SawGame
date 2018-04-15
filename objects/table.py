@@ -8,7 +8,7 @@ from communicate.communicate import Communicate
 class Table(Item):
     name = "Стол"
 
-    communicate = Communicate(["1", "2", "3"])
+    communicate = Communicate(["Этот стол в КРОВИ!!!", "ЭТО КРОВЬ!!!", "КУДА Я ПОПАЛ???"])
 
     def action(self):
         self.currentText = self.communicate.next()

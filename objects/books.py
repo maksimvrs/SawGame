@@ -8,7 +8,7 @@ from communicate.communicate import Communicate
 class Books(Item):
     name = "Книги"
 
-    communicate = Communicate(["1", "2", "3"])
+    communicate = Communicate(["Ого, в таком грязном месте, а книга выглядит, как новая. Что? «Шоколад» Джоанн Харрис, это же любимая книга моей мамы?!", "Да что, черт возьми, здесь происходит?! ЧТО ТЫ ХОЧЕШЬ МНЕ ЭТИМ СКАЗАТЬ??", "ДА, Я ПОСТУПИЛ УЖАСНО, ДА, Я НЕ ОБЩАЮСЬ С НЕЙ УЖЕ 10 ЛЕТ!", "Боже, за что я такс ней??"])
 
     def action(self):
         self.currentText = self.communicate.next()
