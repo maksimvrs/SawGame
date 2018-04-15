@@ -7,6 +7,8 @@ from objects.item import Item
 
 class Chest(Item):
 
+    name = "Сейф"
+
     def action(self):
         self.image = transform.scale(image.load('images/casewithkey.png'), (320 // 4, 240 // 3))
         self.image = transform.scale(image.load('images/emptycase.png'), (320 // 4, 240 // 3))

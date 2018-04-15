@@ -25,7 +25,7 @@ class Game():
 
 		self.items = [Chest(WIN_WIDTH / 2 + 540, 310, 'images/case.png')]
 
-		self.dialog = Dialog("-Добро пожаловать в мир твоих самых страшных кошмаров.")
+		self.dialog = Dialog("- Добро пожаловать в мир твоих самых страшных кошмаров, жалкий офисный червяк.")
 
 		self.left = self.right = self.up = self.down = False
 
@@ -73,7 +73,7 @@ class Game():
 				#     up = False
 
 
-			self.player.update(self.left, self.right, self.down, self.items, self.scroll)
+			self.player.update(self.left, self.right, self.down, self.items, self.scroll, self.dialog)
 			self.player.draw(screen)
 			self.dialog.draw(screen)
 

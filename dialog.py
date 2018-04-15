@@ -14,7 +14,17 @@ class Dialog(sprite.Sprite):
     def setText(self, text):
         if text:
             self.isNull = False
-        self.text = self.font.render(text, True, (0, 128, 0))
+        self.lines = []
+        cur = ''
+        for i in text:
+            cur+=i
+            if len(cur)==62:
+                self.lines.append(cur)
+                cur = ''
+        self.lines.append(cur)
+        self.texts = []
+        for line in self.lines:
+            self.texts.append(self.font.render(line, True, (0, 128, 0)))
 
     def clear(self):
         self.isNull = True
@@ -37,4 +47,7 @@ class Dialog(sprite.Sprite):
             pf.fill((0, 0, 0))
             screen.blit(pf, (160, 5))
 
-            screen.blit(self.text, (165, 15))
+            i = 10
+            for text in self.texts:
+                screen.blit(text, (165, i))
+                i += 20
